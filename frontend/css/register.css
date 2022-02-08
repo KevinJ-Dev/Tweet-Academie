@@ -1,0 +1,22 @@
+body{
+    background: red;
+}
+
+.jumbotron{
+    position: absolute;
+    width: 1188px;
+    height: 808px;
+    left: 126px;
+    top: 152px;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+.logo{
+    position: absolute;
+width: 202px;
+height: 75px;
+left: 0px;
+top: 28px;
+
+}

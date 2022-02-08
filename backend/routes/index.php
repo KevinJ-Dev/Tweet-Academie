@@ -44,7 +44,6 @@ if ($page ==="login") {
     
 }
 if ($page ==="register") { 
-
  $register = new main_controller("register");
 
  
