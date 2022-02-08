@@ -1,4 +1,7 @@
 <?php
+
+include "../controller/main_controller.php";
+
 ob_start();
 
 
@@ -41,7 +44,8 @@ if ($page ==="login") {
     
 }
 if ($page ==="register") { 
-       // vos includes
+
+ $register = new main_controller("register");
 
 }
 
