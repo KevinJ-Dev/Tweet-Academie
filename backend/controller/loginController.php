@@ -25,6 +25,8 @@ class loginController {
         $login = new DB();
         
         $login->get("SELECT * where email like '$this->email'");
+
+        
         
     }
 }

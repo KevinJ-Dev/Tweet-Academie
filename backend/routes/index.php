@@ -47,6 +47,8 @@ if ($page ==="register") {
 
  $register = new main_controller("register");
 
+ 
+
 }
 
 if ($page =="app") {        
