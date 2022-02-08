@@ -1,5 +1,4 @@
 <?php
-
 class DB
 {
     private $hostName = 'localhost';
@@ -31,15 +30,8 @@ class DB
         }
         return $this->rows;
     }
-
-
     function insert($request){
         $this->connection->query($request);
     }
-
-
-
 }
-
-
 ?>

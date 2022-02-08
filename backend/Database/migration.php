@@ -2,9 +2,7 @@
 
 include 'DB_class.php';
 
-
 $migration = new DB();
-
 
 $migration->insert('
 CREATE TABLE `chat` (
@@ -18,7 +16,6 @@ CREATE TABLE `chat` (
   `date_post` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;');
 
-
 $migration->insert('CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `tweet_id` int(11) NOT NULL,
@@ -29,11 +26,6 @@ $migration->insert('CREATE TABLE `comments` (
   `video_post` text NOT NULL,
   `date_post` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;');
-
-
-
-
-
 
 $migration->insert('CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -48,6 +40,5 @@ $migration->insert('CREATE TABLE `users` (
   `user_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 ');
-
 
 ?>
