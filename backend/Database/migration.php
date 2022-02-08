@@ -1,6 +1,6 @@
 <?php
 
-include 'DB_class.php';
+include 'DB.php';
 
 $migration = new DB();
 
