@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 -- Structure de la table `chat`
 --
 
+Use commonDatabase;
+
 DROP TABLE IF EXISTS `chat`;
 CREATE TABLE IF NOT EXISTS `chat` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -85,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `like_post` (
   `ID_user` int NOT NULL,
   `ID_Tweet` int NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 

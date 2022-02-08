@@ -4,8 +4,7 @@ include 'DB.php';
 
 $migration = new DB();
 
-$migration->insert('
-CREATE TABLE `chat` (
+$migration->insert('CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
   `receiver_id` int(11) NOT NULL,

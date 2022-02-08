@@ -28,7 +28,7 @@ if($page === "") {
 
 
 //Partit commune
-
+// ecriture les lien html href= ?p= (votre page);
 
 if($page === "welcome") {
   
