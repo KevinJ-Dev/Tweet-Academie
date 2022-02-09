@@ -1,15 +1,13 @@
 <?php
 
 include "../controller/main_controller.php";
-
+include "../controller/controller.php";
 ob_start();
 
 
 
 // code PHP
 session_start();
-
-
 
 
 // initialisation des routes
@@ -38,20 +36,20 @@ if($page === "welcome") {
     // vos includes
     
 }
+
 if ($page ==="login") { 
     // vos includes
 
     
 }
-if ($page ==="register") { 
+
+if ($page === "register") { 
 
  $register = new main_controller("register");
-
- 
-
 }
 
-if ($page =="app") {        
+
+if ($page == "app") {        
        // vos includes
 }
 
