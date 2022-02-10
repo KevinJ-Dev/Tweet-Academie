@@ -3,9 +3,9 @@
 class DB
 {
     private $hostName = 'localhost';
-    private $dbName = 'commonDatabase';
-    private $userName = 'root';
-    private $password = 'root';
+    private $dbName = 'commondatabase';
+    private $userName = 'mooli';
+    private $password = '';
     private  $rows= [];
     private $connection;
     private $email;
@@ -20,6 +20,12 @@ class DB
             exit();
         }
     }
+    public function getDB()
+    {
+        return $this->connection;
+        // var_dump($this->bdd);
+    }
+
     
     function get_email($request){
         $this->rows = [];
@@ -68,4 +74,3 @@ function get_all($requetas)
 }
 
 
-?>
