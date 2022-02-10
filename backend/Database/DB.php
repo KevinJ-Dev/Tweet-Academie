@@ -8,7 +8,7 @@ class DB
     private $password = 'root';
     private  $rows= [];
     private $connection;
-    
+    private $email;
     public function __construct()
     {
         $this->connection = new mysqli($this->hostName, $this->userName, $this->password, $this->dbName);
@@ -19,7 +19,7 @@ class DB
         }
     }
     
-    function get($request){
+    function get_email($request){
         $this->rows = [];
         if ($result = $this->connection->query($request)) {
             if ($result->num_rows!= 0){
@@ -31,18 +31,7 @@ class DB
         }
         return $this->rows;
     }
-   public function exist($email){
 
-        if ($result = $this->connection->query("SELECT * from user WHERE email like '$email'")) {
-
-            if ($result->num_rows >= 0){
-                while($obj = $result->fetch_assoc()){
-
-                  $this->rows[] = $obj;
-                }
-            }
-        }
-    }
   
    public function get_user() {
         return $this->rows;
