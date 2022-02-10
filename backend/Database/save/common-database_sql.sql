@@ -114,8 +114,8 @@ CREATE TABLE IF NOT EXISTS `tweet` (
 --
 
 DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF EXISTS `users` (
+  `id` NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,

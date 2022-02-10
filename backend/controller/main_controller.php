@@ -8,8 +8,6 @@ class main_controller {
         include "../../frontend/view/$view_name.php";
     }
 
-
-
 }
 
 ?>
