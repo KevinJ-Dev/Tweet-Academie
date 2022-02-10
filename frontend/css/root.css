@@ -1,8 +1,9 @@
 :root{
-    --primary: #fc8598;
-    --secondary: #ff9eae;
-    --gray-dark: #3c4450;
-    --gray-dark-dark:#DEDEDE;
-    --gray-light: #e4e4e4;
+    /* Color */
+    --primary: #29ABE2;
+    --primaryhover: #26bcfc;
+    --secondary: #EAEAEA;
     --white: #ffffff;
+    --title:#393939;
+    /*  */
 }
