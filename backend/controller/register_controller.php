@@ -1,65 +1,95 @@
 <?php
 include __DIR__ . '/../Database/DB.php';
 include __DIR__ . '/../utilitaire/hash.php';
-include "../Tweet-Academie/backend/utilitaire/hash.php";
-class register_controller
-{
-    protected $pseudo;
-    protected $email;
-    protected $password;
-    protected $dateDeNaissance;
-    protected $motDePass;
-    protected $connection_valid;
-    protected $password_hash;
-    
-    
-    
-    public function __construct()
-    { 
-        $this->pseudo = $_POST["peudo"];
-        $this->email = $_POST["email"];
-        $this->motDePass = $_POST["password"]; 
-        $this->dateDeNaissance = $_POST["birthdate"];
-        
-        $this->connection = $_POST["connection"];   
-    }   
-    
-    
-    public function hash() {
-        
-        $hash = new hash();
-        $this->password_hash = $hash->hash($this->motDePass);
-        
-    }
-    
-    public function insert() {
-        $register = new DB();
-        // check email
-        $check = $register->get_email("SELECT * from users WHERE email like 'sqldka@gmail.com'");
-        
-        $test = $register->get_all("SELECT * from users WHERE email like 'sqldka@gmail.com'");
-        foreach ($test as $val) {
-            echo $val['password'];
 
-          
-        }
-            
-            if (empty($check)) {
-                echo "all-good";
-                $register->insert("INSERT INTO users(pseudo,email,password,birthdate,userpp,banner,description,theme,user_date) VALUES('dsfsdfsdf','sqldka@gmail.com','asdqsdq','2018-09-24','dfssdf','erzzz','sdjklkj','8','2018-09-24')");
-                
-            } else {
-                echo "Votre mail est déjà utilisé";
-                
-                
-            }
+
+// A REVOIR LES NOM EXACTE
+
+class Inscription
+{
+
+    protected $dateDeNaissance;
+    protected $pseudo;
+    protected $mail;
+    protected $motDePass;
+    protected $connexion;
+    protected $bdd;
+
+    public function __construct($newDN, $newMail, $newMDP, $newPseudo)
+    {
+        $this->pseudo = $newPseudo;
+        $this->dateDeNaissance = $newDN;
+        $this->mail = $newMail;
+        $this->motDePass = $newMDP;
+        $this->connexion = new DB();
+        $this->bdd = $this->connexion->getDB();
+    }
+
+    public function insert()
+    {
+        $query = $this->bdd->prepare('INSERT INTO users (mail,pseudo,password) VALUES (?,?,?)');
+        $query->execute(
+            array(
+                $this->mail,
+                $this->pseudo,
+                hash_hmac('ripemd160', $this->motDePass, 'vive le projet tweet_academy')
+            )
+        );
+
+        $query2 = $this->bdd->prepare('insert into users (birthday) VALUES (?)');
+        $query2->execute(
+            array(
+                $result['id'],
+                $this->dateDeNaissance,
+            )
+        );
+
+        //INNERJOIN ID USER ET ID FOLLOWER
+
+        $addFollow = $this->bdd->prepare('insert into follow(id,follower_id) values (?, " ")');
+        $addFollow->execute(array($result['id']));
+    }
+
+    public function checkEmail($email)
+    {
+        $check = $this->bdd->prepare('select mail from users where mail=?');
+        $check->execute(array($email));
+
+        if ($check->rowCount() >= 1) {
+            return false;
+        } else {
+            return true;
         }
         
     }
-    
-    
-    $register_controller = new register_controller();
-    $register_controller->hash();
-    $register_controller->insert();
-    
-    print_r($register_controller);
+
+    public function checkPseudo($pseudo)
+    {
+        $queryPseudo = $this->bdd->prepare('select pseudo from users where pseudo=?');
+        $queryPseudo->execute(array($pseudo));
+        if ($queryPseudo->rowCount() >= 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function error($msg)
+    {
+        echo '<div class="alert alert-danger alert-dismissible fade show">
+        <strong>Error!</strong>' . $msg . '</div>';
+    }
+
+    public function valide($confirm)
+    {
+        echo '<div class="alert alert-success" role="alert">
+        <strong>Félicitation</strong> ' . $confirm . '.
+      </div>';
+    }
+}
+
+$register_controller = new register_controller();
+$register_controller->hash();
+$register_controller->insert();
+
+print_r($register_controller);
