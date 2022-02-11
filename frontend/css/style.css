@@ -3,6 +3,8 @@ body{
     padding: 0;
 }
 
+/* Page Register */
+
 /* Jumbotron */
 .jumbotron{
     padding: 0;
@@ -92,7 +94,7 @@ h1, h2{
 
 /* Btn register */
 .btn-register{
-    position: absolute;
+    /* position: absolute; */
     width: 272px;
     height: 75px;
     background-color: var(--primary);
@@ -113,4 +115,31 @@ input{
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
+}
+
+/* Page Login */
+
+/* Container Register*/
+/* .login-content{
+    position: relative;
+    color: #393939;
+}
+
+.login-content input[type=submit]{
+    position: relative;
+    left: 0;
+    float: center;
+}
+
+.label-center{
+    text-align: center;
+    #padding: 10%;
+    #margin: 10%;
+}
+*/
+
+/* Btn-Container */
+.btn-container{
+    /* display: flex; */
+    
 }
