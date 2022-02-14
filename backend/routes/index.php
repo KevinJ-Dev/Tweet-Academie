@@ -1,15 +1,17 @@
 <?php
 
-include "../controller/main_controller.php";
 
+
+
+//  URL example http://localhost:8080/index.php?p=register
+
+include "backend/controller/main_controller.php";
 ob_start();
 
 
 
 // code PHP
 session_start();
-
-
 
 
 // initialisation des routes
@@ -22,7 +24,8 @@ if (isset($_GET['p'])) {
 
 if($page === "") {
 
-    
+    $welcome = new main_controller("welcome");
+
 }
 //fin init des routes
 
@@ -35,22 +38,23 @@ if($page === "") {
 
 if($page === "welcome") {
   
-    // vos includes
     
 }
-if ($page ==="login") { 
+
+if ($page === "login") { 
     // vos includes
 
-    
+    $login = new main_controller("login");
+
 }
-if ($page ==="register") { 
+
+if ($page === "register") { 
+
  $register = new main_controller("register");
-
- 
-
 }
 
-if ($page =="app") {        
+
+if ($page == "app") {        
        // vos includes
 }
 

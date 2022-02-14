@@ -1,10 +1,10 @@
 <?php
-include "meta.html";
+include "frontend/view/meta.html";
 ?>
 
 <body>
     <div class="logo-tweet">
-        <a href="#">
+        <a href="#">g
             <div class="logo">
                 <img src="..\img\logo.png" alt="logo">
             </div>
