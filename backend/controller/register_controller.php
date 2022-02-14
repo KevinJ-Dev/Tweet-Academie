@@ -108,8 +108,8 @@ if(!empty($_POST["pseudo"]) && !empty($_POST["email"])) {
            
       
         if($result2 == false && $result3 == false) {
-            echo "c'est good";
-            
+            echo "good";
+            $_SESSION["connect"] = "yes";
              $register_controller->insert_user();
         }
         
