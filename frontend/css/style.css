@@ -3,10 +3,14 @@ body{
     padding: 0;
 }
 
+.p-5{
+    padding: 3rem 3rem 6rem !important;
+}
+
 /* Page Register */
 
 /* Jumbotron */
-.jumbotron{
+/* .jumbotron{
     padding: 0;
     position: relative;
     width: 1188px;
@@ -18,66 +22,66 @@ body{
     height: 80%;
     display: flex;
     justify-content: center;
-}
+} */
 
 /* Logo */
-.logo{
+/* .logo{
     text-align: center;
     padding: 0 0 1rem 0;
-}
+} */
 
-h1, h2{
+/* h1, h2{
     color: var(--title);
     font-size: 1.5rem;
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
     text-align: center;
-}
+} */
 
 /* Connect-content */
-.test_container{
+/* .test_container{
     position: relative;
     top: 0;
     left: 0;
     width: 50%;
     height: auto;
     padding: 20px;
-}
+} */
 
 /* Container Connexion */
-.connect-content{
+/* .connect-content{
     position: relative;
     font-weight: 900;
     font-size: 24px;
     border-right: 1px solid var(--secondary);
     text-align: left;
-}
+} */
 
-.connect-content input{
+/* .connect-content input{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     top: 0;
     left: 0%;
-}
+} */
 
 /* Container Register*/
-.register-content{
+/* .register-content{
     position: relative;
     color: #393939;
     border-left: 1px solid black;
-}
+} */
 
-.register-content input[type=submit]{
+/* .register-content input[type=submit]{
     position: relative;
     left: 0;
     float: center;
-}
+} */
 
 /* Btn connect */
-.btn-connect{
+/* .btn-connect{
     background-color: transparent;
     border: 1px solid #393939;
     border-radius: 5px;
@@ -86,27 +90,27 @@ h1, h2{
     height: 75px;
     left: 292px;
     top: 217px;
-}
+} */
 
-.btn-connect:hover{
+/* .btn-connect:hover{
     background-color: var(--primary);
-}
+} */
 
 /* Btn register */
-.btn-register{
-    /* position: absolute; */
+/* .btn-register{
+    position: absolute;
     width: 272px;
     height: 75px;
     background-color: var(--primary);
     border-radius: 5px;
     font-size: 1.5rem;
-}
+} */
 
-.btn-register:hover{
+/* .btn-register:hover{
     background-color: var(--primaryhover);
-}
+} */
 
-input{
+/* input{
     background-color: var(--secondary);
     width: 100%;
     padding: 12px;
@@ -115,31 +119,4 @@ input{
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 16px;
-}
-
-/* Page Login */
-
-/* Container Register*/
-/* .login-content{
-    position: relative;
-    color: #393939;
-}
-
-.login-content input[type=submit]{
-    position: relative;
-    left: 0;
-    float: center;
-}
-
-.label-center{
-    text-align: center;
-    #padding: 10%;
-    #margin: 10%;
-}
-*/
-
-/* Btn-Container */
-.btn-container{
-    /* display: flex; */
-    
-}
+} */
