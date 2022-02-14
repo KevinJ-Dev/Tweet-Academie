@@ -4,8 +4,9 @@
 
 
 //  URL example http://localhost:8080/index.php?p=register
+include __DIR__ . "/../controller/main_controller.php";
 
-include "backend/controller/main_controller.php";
+// include "../../backend/controller/main_controller.php";
 ob_start();
 
 

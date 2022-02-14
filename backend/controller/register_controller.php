@@ -11,12 +11,10 @@ class Inscription
     protected $pseudo;
     protected $mail;
     protected $motDePass;
-    protected $birthdate;
     protected $userpp;
     protected $banner;
     protected $description;
     protected $theme;
-    protected $user_date;
     protected $connexion;
     protected $bdd;
     
@@ -96,18 +94,21 @@ class Inscription
             }
         }
         
-        $_POST["email"] = "sdfsdfsdfdssqldka@gmail.com";
-        $_POST["pseudo"] = "dsfsdfwxfisdjsdf";
-        $register_controller = new Inscription("2018-09-24", "dkljfgklj", "dkslfj","kjhkjhkjh","jhkjhkjh","ldskfmlksd","dkslfj",8);
+        // $register_controller = new Inscription("2018-09-24", "dkljfgklj", "dkslfj","kjhkjhkjh","jhkjhkjh","ldskfmlksd","dkslfj",8);
 
-        $result2 = $register_controller->checkEmail($_POST["email"]);
+if(!empty($_POST["pseudo"]) && !empty($_POST["email"])) {
+
+
+        $register_controller = new Inscription($_POST["birthday"], $_POST["email"], "description", $_POST["pseudo"],"userpp","banner",$_POST["password"],8);
+
+        $result2 = $register_controller->checkEmail($_POST["email"]);   
         $result3 = $register_controller->checkPseudo($_POST["pseudo"]);
-        
+           
       
         if($result2 == false && $result3 == false) {
-            echo "c'est good";
-            
-            // $register_controller->insert_user();
+            echo "good";
+            $_SESSION["connect"] = "yes";
+             $register_controller->insert_user();
         }
         
         elseif($result2 != false ) {
@@ -116,3 +117,9 @@ class Inscription
         elseif($result3 != false ) {
             echo "pseudo déjà utilisé";
         }
+
+    }
+
+    else {
+        echo "champs manquant * ";
+    }
