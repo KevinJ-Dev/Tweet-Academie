@@ -1,5 +1,6 @@
 <?php
 include "meta.html";
+include __DIR__ . '/../Database/loginController.php';
 ?>
 
 <body class="bg-dark">
