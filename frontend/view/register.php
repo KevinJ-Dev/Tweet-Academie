@@ -14,10 +14,15 @@ include "meta.html";
                         </div>
                     </a>
                 </div>
+
+
                 <div class="login-form" id="login-form">
                     <form class="form-signin m-auto" action="POST" style="max-width: 300px;">
                         <h1 class="h3 mb-3 font-weight-normal">S'INREGISTRER</h1>
                         <div class="label-center">
+
+                        <div class="text-danger" id="message"></div>
+
                             <!-- Pseudo -->
                             <div class="label-cente">
                                 <label for="pseudo">Pseudo</label>
@@ -60,11 +65,9 @@ include "meta.html";
         var password = $("#password").val();
         var submit = $("#submit");
 
-var login_form = $("#login-form");
-
+var message = $("#message");
 
         e.preventDefault();
-
         $.ajax({
             type: "POST",
             url: "../../backend/controller/register_controller.php",
@@ -75,12 +78,16 @@ var login_form = $("#login-form");
                 password: password,
             },
             success: function(resultat, statut) {
-                $(login_form).append(resultat);
+              if(resultat != "good")  {
+                $(message).text(resultat);
 
-                console.log(resultat);
+              }
+                if (resultat == "good") {
+                   
+                    window.location.href = "?p=app";
 
-
-
+                    console.log("sucess");
+                }
             }
         });
     });
