@@ -11,12 +11,10 @@ class Inscription
     protected $pseudo;
     protected $mail;
     protected $motDePass;
-    protected $birthdate;
     protected $userpp;
     protected $banner;
     protected $description;
     protected $theme;
-    protected $user_date;
     protected $connexion;
     protected $bdd;
     
