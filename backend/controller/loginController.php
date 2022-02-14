@@ -54,11 +54,7 @@ class loginController
     }
 }
 
-session_start();
-session_destroy();
-session_unset();
-
-if (isset($_POST['submit-connect']) && $_POST['submit-connect'] == "Se connecter") {
+if(!empty($_POST["email"]) && !empty($_POST["password"])) {
 
     $log = new loginController($_POST['email'], $_POST['password']);
     if ($log->checkAccount()) {
@@ -72,6 +68,3 @@ if (isset($_POST['submit-connect']) && $_POST['submit-connect'] == "Se connecter
     }
 }
 
-$loginController = new loginController("sqldka@gmail.com", "dkljfgklj" );
-echo $loginController->getInfo("sqldka@gmail.com");
-print_r($loginController);

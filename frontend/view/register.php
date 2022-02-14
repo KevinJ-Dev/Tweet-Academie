@@ -58,12 +58,13 @@ include "meta.html";
 
 
     <script type="text/javascript">
+        var submit = $("#submit");
     $(submit).click(function(e) {
         var email = $("#email").val();
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
         var password = $("#password").val();
-        var submit = $("#submit");
+
 
 var message = $("#message");
 
