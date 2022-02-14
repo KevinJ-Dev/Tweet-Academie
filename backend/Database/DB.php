@@ -6,7 +6,7 @@ class DB
     public function __construct()
     {
         try {
-            $this->bdd = new PDO('mysql:dbname=commondatabase;host=localhost', 'root', '');
+            $this->bdd = new PDO('mysql:dbname=commonDatabase;host=localhost', 'root', 'root');
         } catch (Exception $e) {
             die('Connexion échoué :' . $e->getMessage());
         }
