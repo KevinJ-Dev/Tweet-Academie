@@ -17,8 +17,6 @@ class Inscription
     protected $description;
     protected $theme;
     protected $user_date;
-    
-    
     protected $connexion;
     protected $bdd;
     
@@ -32,7 +30,6 @@ class Inscription
         $this->banner = $banner;
         $this->description = $description;
         $this->theme = $theme;
-        
         $this->connexion = new DB();
         $this->bdd = $this->connexion->getDB();
     }
