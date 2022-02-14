@@ -20,7 +20,7 @@ class Inscription
     protected $connexion;
     protected $bdd;
     
-    public function __construct($newDN, $newMail, $newMDP, $newPseudo,$userpp,$banner,$description,$theme )
+    public function __construct($newDN, $newMail, $newMDP, $newPseudo,$userpp,$banner,$description,$theme)
     {
         $this->pseudo = $newPseudo;
         $this->dateDeNaissance = $newDN;
@@ -54,52 +54,65 @@ class Inscription
         
         public function checkEmail($email)
         {
+            $message = "email déjà utilisé";
             $check = $this->bdd->prepare('SELECT * from users where email=?');
-            $check->execute(array($this->mail));
+            $check->execute(array($email));
             $result = $check->fetch();
-
-            print_r($result);
-            // if ($result->rowCount() >= 1) {
-            //     // return false; 
-            //     echo "fabien";
-            // } else {
-            //     // return true;
-            // echo "makele";
-            // }
-            
-        }
-        
-        public function checkPseudo($pseudo)
-        {
-            $queryPseudo = $this->bdd->prepare('select pseudo from users where pseudo=?');
-            $queryPseudo->execute(array($pseudo));
-            if ($queryPseudo->rowCount() >= 1) {
+            if (!empty($result)) {
+                return $message;
+            }
+            else {
                 return false;
-            } else {
-                return true;
+            
+            }
+                
+            }
+            
+            public function checkPseudo($pseudo)
+            {
+                $message = "pseudo déjà utilisé";
+                $check_1 = $this->bdd->prepare('SELECT * from users where pseudo=?');
+                $check_1->execute(array($pseudo));
+                $result_1 = $check_1->fetch();
+                if (!empty($result_1)) {
+                    return $message;
+                }
+                else {
+                    return false;
+                }
+            }
+            
+            public function error($msg)
+            {
+                echo '<div class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong>' . $msg . '</div>';
+            }
+            
+            public function valide($confirm)
+            {
+                echo '<div class="alert alert-success" role="alert">
+                <strong>Félicitation</strong> ' . $confirm . '.
+                </div>';
             }
         }
         
-        public function error($msg)
-        {
-            echo '<div class="alert alert-danger alert-dismissible fade show">
-            <strong>Error!</strong>' . $msg . '</div>';
+        $_POST["email"] = "sdfsdfsdfdssqldka@gmail.com";
+        $_POST["pseudo"] = "dsfsdfwxfisdjsdf";
+        $register_controller = new Inscription("2018-09-24", "dkljfgklj", "dkslfj","kjhkjhkjh","jhkjhkjh","ldskfmlksd","dkslfj",8);
+
+        $result2 = $register_controller->checkEmail($_POST["email"]);
+        $result3 = $register_controller->checkPseudo($_POST["pseudo"]);
+        
+      
+        if($result2 == false && $result3 == false) {
+            echo "c'est good";
+            
+            // $register_controller->insert_user();
         }
         
-        public function valide($confirm)
-        {
-            echo '<div class="alert alert-success" role="alert">
-            <strong>Félicitation</strong> ' . $confirm . '.
-            </div>';
+        elseif($result2 != false ) {
+            echo "mail déjà utilisé";
         }
-    }
-    
-    
-    // $query = $this->bdd->prepare('INSERT INTO users (email,pseudo,password,birthdate,userpp,banner,description,theme,user_date) VALUES (?,?,?,?,?,?,?,?,?)');
-    
-    $register_controller = new Inscription("2018-09-24", "dkljfgklj", "dkslfj","kjhkjhkjh","jhkjhkjh","ldskfmlksd","dkslfj",8);
-    echo $register_controller->checkEmail("sqldka@gmail.com");
-    print_r($register_controller);
-    
-    
-    
+        elseif($result3 != false ) {
+            echo "pseudo déjà utilisé";
+        }
