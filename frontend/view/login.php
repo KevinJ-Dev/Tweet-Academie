@@ -41,7 +41,6 @@ if (isset($_POST['submit-connect']) && $_POST['submit-connect'] == "Se connecter
                 <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe..." required="">
                 <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-connect">Se connecter</button>
                 <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-register">S'inscrire</button>
-                    <a href="index.php"><input type="button" name="submit" value="S'inscrire" /></a><br />
             </form>
         </div>
 </body>
