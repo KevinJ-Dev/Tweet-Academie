@@ -53,6 +53,25 @@ class loginController
       </div>';
     }
 }
+include __DIR__ . '/../Database/loginController.php';
+
+session_start();
+session_destroy();
+session_unset();
+
+if (isset($_POST['submit-connect']) && $_POST['submit-connect'] == "Se connecter") {
+
+    $log = new loginController($_POST['email'], $_POST['password']);
+    if ($log->checkAccount()) {
+        session_start();
+        $info = $log->getInfo($_POST['email']);
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['password'] = $_POST['password'];
+        header('location:login.php');
+    } else {
+        $log->error('Adresse mail ou mot de passe incorrecte');
+    }
+}
 
 $loginController = new loginController("sqldka@gmail.com", "dkljfgklj" );
 echo $loginController->getInfo("sqldka@gmail.com");
