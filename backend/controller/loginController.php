@@ -53,8 +53,6 @@ class loginController
       </div>';
     }
 }
-include __DIR__ . '/../Database/loginController.php';
-
 session_start();
 session_destroy();
 session_unset();
