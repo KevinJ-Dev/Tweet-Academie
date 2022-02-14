@@ -1,5 +1,24 @@
 <?php
 include "meta.html";
+include __DIR__ . '/../Database/loginController.php';
+
+session_start();
+session_destroy();
+session_unset();
+
+if (isset($_POST['submit-connect']) && $_POST['submit-connect'] == "Se connecter") {
+
+    $log = new loginController($_POST['email'], $_POST['password']);
+    if ($log->checkAccount()) {
+        session_start();
+        $info = $log->getInfo($_POST['email']);
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['password'] = $_POST['password'];
+        header('location:login.php');
+    } else {
+        $log->error('Adresse mail ou mot de passe incorrecte');
+    }
+}
 ?>
 
 <body class="bg-dark">
@@ -22,6 +41,7 @@ include "meta.html";
                 <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe..." required="">
                 <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-connect">Se connecter</button>
                 <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-register">S'inscrire</button>
+                    <a href="index.php"><input type="button" name="submit" value="S'inscrire" /></a><br />
             </form>
         </div>
 </body>
