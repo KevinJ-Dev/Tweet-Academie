@@ -21,7 +21,7 @@ include __DIR__ . '/../Database/loginController.php';
                 <input type="email" id="email" name="email" class="form-control" placeholder="Adresse mail..." required="" autofocus="">
                 <label for="inputPassword"  class="sr-only">Mot de passe</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe..." required="">
-                <button class="btn btn-lg btn btn-info btn-block" id="submit"  type="submit" name="submit-connect">Se connecter</button>
+                <button class="btn btn-lg btn btn-info btn-block" id="submit"  type="submit" name="submit">Se connecter</button>
                 <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-register" formaction="register.php">S'inscrire</button>
                     <div id="message" ></div>
             </form>
