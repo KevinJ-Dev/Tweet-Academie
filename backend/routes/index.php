@@ -51,7 +51,15 @@ if ($page === "login") {
 
 if ($page === "register") { 
 
- $register = new main_controller("register");
+    
+if(!empty($_SESSION["email"])) {
+    $register = new main_controller("app");
+
+}
+else {
+    $register = new main_controller("register");
+
+}
 }
 
 

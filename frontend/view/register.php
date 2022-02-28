@@ -17,7 +17,7 @@ include "meta.html";
 
 
                 <div class="login-form" id="login-form">
-                    <form class="form-signin m-auto" action="POST" style="max-width: 300px;">
+                    <form class="form-signin m-auto"  style="max-width: 300px;">
                         <h1 class="h3 mb-3 font-weight-normal">S'INREGISTRER</h1>
                         <div class="label-center">
 
@@ -58,8 +58,15 @@ include "meta.html";
 
 
     <script type="text/javascript">
+<<<<<<< HEAD
         var submit = $("#submit");
     $(submit).click(function(e) {
+=======
+
+    $("#submit").click(function(e) {
+        e.preventDefault();
+
+>>>>>>> execucuteRegister
         var email = $("#email").val();
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
@@ -68,7 +75,6 @@ include "meta.html";
 
 var message = $("#message");
 
-        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "../../backend/controller/register_controller.php",
