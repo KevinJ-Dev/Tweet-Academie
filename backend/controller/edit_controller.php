@@ -19,9 +19,9 @@ class Edit
     {
         if (isset($_POST['Pseudo'])) {
             $newPseudo = $_POST['changePseudo'];
-            $email2 = $_SESSION['login'];
+            $email = $_SESSION['login'];
             if (($newPseudo != '')) {
-                $sql = "UPDATE users SET pseudo = '$newPseudo' WHERE email = '$email2'";
+                $sql = "UPDATE users SET pseudo = '$newPseudo' WHERE email = '$email'";
                 $stmt = $this->bdd->prepare($sql);
                 $stmt->execute();
                 $_SESSION['pseudo'] = $newPseudo;
@@ -35,11 +35,11 @@ class Edit
             $this->password = $_POST['currentpassword'];
             $newpassword = $_POST['newpassword'];
             $verifpassword = $_POST['changepassword'];
-            $email2 = $_SESSION['login'];
+            $email = $_SESSION['login'];
             $newpassword = hash_hmac('ripemd160', $newpassword, 'secret');
             if (($this->password != '') && ($newpassword != '') && ($verifpassword != '')) {
                 if ($newpassword == $verifpassword) {
-                    $sql = "UPDATE users SET password ='$newpassword' WHERE email = '$email2'";
+                    $sql = "UPDATE users SET password ='$newpassword' WHERE email = '$email'";
                     $stmt = $this->bdd->prepare($sql);
                     $stmt->execute();
                     $_SESSION['password'] = $newpassword;
