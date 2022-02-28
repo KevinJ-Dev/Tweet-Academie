@@ -35,7 +35,6 @@ include "meta.html";
                             </div>
                             <input class="form-control" id="email" type="email" name="email" tabindex="2" required
                                 autofocus placeholder="Votre email..">
-                            <!-- Date -->
                             <div class="label-center">
                                 <label for="date">Date de naissance</label>
                             </div>
@@ -65,6 +64,7 @@ include "meta.html";
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
         var password = $("#password").val();
+
 
 var message = $("#message");
 
