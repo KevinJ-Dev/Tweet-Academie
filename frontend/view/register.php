@@ -56,10 +56,15 @@ include "meta.html";
 
 
     <script type="text/javascript">
+<<<<<<< HEAD
+        var submit = $("#submit");
+    $(submit).click(function(e) {
+=======
 
     $("#submit").click(function(e) {
         e.preventDefault();
 
+>>>>>>> execucuteRegister
         var email = $("#email").val();
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
