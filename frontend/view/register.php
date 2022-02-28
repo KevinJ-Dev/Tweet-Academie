@@ -48,8 +48,7 @@ include "meta.html";
                                 required autofocus placeholder="Votre mot de passe..  ">
                             <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-connect">Se
                                 connecter</button>
-                            <button id="submit" class="btn btn-lg btn btn-info btn-block" type="submit"
-                                name="submit-register">S'inscrire</button>
+                            <button id="submit" class="btn btn-lg btn btn-info btn-block" type="submit">S'inscrire</button>
                     </form>
                 </div>
             </div>
@@ -66,7 +65,6 @@ include "meta.html";
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
         var password = $("#password").val();
-        var submit = $("#submit");
 
 var message = $("#message");
 
