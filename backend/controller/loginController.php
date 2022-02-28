@@ -58,11 +58,9 @@ if(!empty($_POST["email"]) && !empty($_POST["password"])) {
 
     $log = new loginController($_POST['email'], $_POST['password']);
     if ($log->checkAccount()) {
-        session_start();
         $info = $log->getInfo($_POST['email']);
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['password'] = $_POST['password'];
-        header('location:login.php');
     } else {
         $log->error('Adresse mail ou mot de passe incorrecte');
     }
