@@ -21,7 +21,7 @@ include "meta.html";
                         <h1 class="h3 mb-3 font-weight-normal">S'INREGISTRER</h1>
                         <div class="label-center">
 
-                        <div class="text-danger" id="message"></div>
+                            <div class="text-danger" id="message"></div>
 
                             <!-- Pseudo -->
                             <div class="label-cente">
@@ -46,8 +46,8 @@ include "meta.html";
                             </div>
                             <input class="form-control" id="password" type="password" name="password" tabindex="3"
                                 required autofocus placeholder="Votre mot de passe..  ">
-                            <button class="btn btn-lg btn btn-info btn-block" type="submit" name="submit-connect">Se
-                                connecter</button>
+                            <a class="btn btn-lg btn btn-info btn-block" href="?p=login">Se
+                                connecter</a>
                             <button id="submit" class="btn btn-lg btn btn-info btn-block" type="submit"
                                 name="submit-register">S'inscrire</button>
                     </form>
@@ -58,17 +58,26 @@ include "meta.html";
 
 
     <script type="text/javascript">
-        var submit = $("#submit");
+    var submit = $("#submit");
     $(submit).click(function(e) {
+        e.preventDefault();
+        var input = $("input");
+        for (let i = 0; i < input.length; i++) {
+            if ($(input[i]).val() == "") {
+                $(input[i]).css("border", "1px solid red")
+            } else {
+                $(input[i]).css("border", "1px solid #ced4da")
+            }
+        }
+
         var email = $("#email").val();
         var birthday = $("#birthday").val();
         var pseudo = $("#pseudo").val();
         var password = $("#password").val();
 
 
-var message = $("#message");
+        var message = $("#message");
 
-        e.preventDefault();
         $.ajax({
             type: "POST",
             url: "../../backend/controller/register_controller.php",
@@ -79,12 +88,17 @@ var message = $("#message");
                 password: password,
             },
             success: function(resultat, statut) {
-              if(resultat != "good")  {
-                $(message).text(resultat);
+                if (resultat != "good") {
 
-              }
+
+
+                    $(message).addClass("alert alert-danger");
+
+                    $(message).text(resultat);
+
+                }
                 if (resultat == "good") {
-                   
+
                     window.location.href = "?p=app";
 
                     console.log("sucess");

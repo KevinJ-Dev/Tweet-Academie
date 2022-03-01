@@ -2,9 +2,11 @@
 
 
 
+include __DIR__ . "/../controller/main_controller.php";
+
+include __DIR__ . "/../controller/app_controller.php";
 
 //  URL example http://localhost:8080/index.php?p=register
-include __DIR__ . "/../controller/main_controller.php";
 
 // include "../../backend/controller/main_controller.php";
 ob_start();
@@ -43,20 +45,38 @@ if($page === "welcome") {
 }
 
 if ($page === "login") { 
-    // vos includes
 
-    $login = new main_controller("login");
+    if(!empty($_SESSION["email"])) {
+        header('Location: ?p=app');
+    
+    } else {
+
+        $login = new main_controller("login");
+
+    }
 
 }
 
 if ($page === "register") { 
 
+
+if(!empty($_SESSION["email"])) {
+    header('Location: ?p=app');
+} 
  $register = new main_controller("register");
 }
 
 
-if ($page == "app") {        
-       // vos includes
+if ($page === "app") {
+    if(!empty($_SESSION["email"])) {
+        $register = new app_controller("app");   
+
+    } else {
+        header('Location: ?p=welcome');
+
+    }
+    
+
 }
 
 

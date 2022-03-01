@@ -1,5 +1,8 @@
 <?php
+include __DIR__ . '/../utilitaire/session.php';
 include __DIR__ . '/../Database/DB.php';
+include __DIR__ . '/../routes/index.php';
+
 class LoginController
 {
     protected $connexion;
@@ -30,7 +33,7 @@ class LoginController
 
     public function getInfo($mail)
     {
-        $info = $this->bdd->prepare('select email from users ');
+        $info = $this->bdd->prepare('select email from users where email = ? ');
         $info->execute(array($mail));
         return $info->fetch();
     }
@@ -58,11 +61,13 @@ if(!empty($_POST["email"]) && !empty($_POST["password"])) {
 
     $log = new loginController($_POST['email'], $_POST['password']);
     if ($log->checkAccount()) {
+        echo "success";
         $info = $log->getInfo($_POST['email']);
         $_SESSION['email'] = $_POST['email'];
-        $_SESSION['password'] = $_POST['password'];
+        $_SESSION['connect'] ="yes";
+
     } else {
-        $log->error('Adresse mail ou mot de passe incorrecte');
+        echo "mot de passe et email ne corespondent pas";
     }
 }
 

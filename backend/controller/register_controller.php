@@ -1,4 +1,6 @@
 <?php
+include __DIR__ . '/../utilitaire/session.php';
+include __DIR__ . '/../routes/index.php';
 include __DIR__ . '/../Database/DB.php';
 class Register
 {
@@ -78,8 +80,8 @@ class Register
             
             public function error($msg)
             {
-                echo '<div class="alert alert-danger alert-dismissible fade show">
-                <strong>Error!</strong>' . $msg . '</div>';
+                echo "<div class='alert alert-danger alert-dismissible fade show'>
+                <strong>Error!</strong>". $msg . "</div>";
             }
             
             public function valide($confirm)
@@ -92,7 +94,7 @@ class Register
         
 
 
-if(!empty($_POST["pseudo"]) && !empty($_POST["email"])) {
+if(!empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["birthday"]) && !empty($_POST["password"]) ) {
 
 
         $register_controller = new Register($_POST["birthday"], $_POST["email"], $_POST["password"], $_POST["pseudo"], "userpp","banner","description",8);
@@ -102,9 +104,12 @@ if(!empty($_POST["pseudo"]) && !empty($_POST["email"])) {
            
       
         if($result2 == false && $result3 == false) {
-            echo "good";
             $_SESSION["connect"] = "yes";
+            $_SESSION["email"] = $_POST["email"];
              $register_controller->insert_user();
+
+            echo "good";
+          
         }
         
         elseif($result2 != false ) {
