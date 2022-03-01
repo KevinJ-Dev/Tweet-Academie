@@ -23,7 +23,6 @@
 
     }
     .center_view{
-        background: yellow;
         height: 100%;
 
        
@@ -40,20 +39,20 @@
 
 <div class="left_view">
     
-<?php include "../left_view.php"; ?>
+<?php include __DIR__ ."/left_view.php"; ?>
 
 </div>
 
 <div class="center_view">
 
-<?php include "../center_view.php"; ?>
+<?php include __DIR__ ."/center_view.php"; ?>
 
 
 </div>
 
 <div class="right_view">
 
-<?php include "../right_view.php"; ?>
+<?php include __DIR__ ."/right_view.php"; ?>
 
 </div>
 
