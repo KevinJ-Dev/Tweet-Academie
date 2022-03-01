@@ -63,9 +63,12 @@ if ($page === "register") {
 if(!empty($_SESSION["email"])) {
     header('Location: ?p=app');
 } 
- $register = new main_controller("register");
-}
 
+else {
+    $register = new main_controller("register");
+
+}
+}
 
 if ($page === "app") {
     if(!empty($_SESSION["email"])) {
