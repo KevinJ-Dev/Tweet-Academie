@@ -17,6 +17,7 @@ class postController
       // $this->email = $_SESSION["email"];
       $this->connexion = new DB();
       $this->bdd = $this->connexion->getDB();
+      $this->text_post = $_POST["comment"];
    }
    public function set_user() {
       $user = $this->bdd->query("SELECT * from users where email like 'klsdfj@gmail.com'");
@@ -34,28 +35,27 @@ class postController
    }
    
    public function addTweet() {
+      
       $this->bdd->query("INSERT INTO tweet (id_user, text_post, link_post,img_post,video_post)
-      VALUES ('$this->user_id', 'valeur2', 'dklsfj', 'dsklfjsdkfj','sdkfljsdklfj')");
+      VALUES ('$this->user_id', '$this->text_post', 'dklsfj', 'dsklfjsdkfj','sdkfljsdklfj')");
       
       
    }
    
-   public function getAllTweet() {
-      
-   }
+
 }
 
 
-$tweet = new postController();   
+
+
+if(!empty($_SESSION["email"]) && !empty($_POST["comment"])) {
+   
+   
+   $tweet = new postController();   
 $tweet->set_user();
 echo $tweet->get_user_id();
 
 $tweet->addTweet();
-
-if(!empty($_SESSION["email"])) {
-   
-   
-   
    
    
 }

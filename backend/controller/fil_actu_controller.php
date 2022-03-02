@@ -4,7 +4,7 @@ include __DIR__ . '/../routes/index.php';
 
 class fil_actu_controller
 {
-    
+    private $tab;  
     
     public function __construct()
     {
@@ -15,19 +15,26 @@ class fil_actu_controller
     
     public function get_post()  {
         
+        $this->tab = [];
         $post = $this->bdd->query("SELECT * from tweet order by date_post ASC");
-       $rows = $post->fetch(PDO::FETCH_ASSOC);
-        return $rows;
+        while($rows = $post->fetch(PDO::FETCH_ASSOC)) {
+            
+            array_push($this->tab,$rows);
+        }
+        return $this->tab;
     } 
+    
+    
+    
 }
 
 
 $actu = new fil_actu_controller();   
 $result = $actu->get_post();
 
-$json = json_encode($result);
 
-print_r($json);
+$data = json_encode($result);
+print_r($data);
 
 
 if(!empty($_SESSION["email"])) {
