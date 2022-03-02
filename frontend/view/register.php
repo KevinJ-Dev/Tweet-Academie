@@ -1,60 +1,111 @@
 <?php
-include "frontend/view/meta.html";
+include "meta.html";
 ?>
 
-<body>
-    <div class="logo-tweet">
-        <a href="#">g
-            <div class="logo">
-                <img src="..\img\logo.png" alt="logo">
-            </div>
-        </a>
-    </div>
-    <div class="content-container">
-        <div class="container-fluid">
-            <div class="jumbotron">
-                <div class="test_container connect-content">
-                    <h2>Déjà inscrit ?</h2>
-                    <input type="submit" name="create-connect" class="btn-send btn-connect" value="SE CONNECTER">
-                </div>
-                <div class="test_container register-content">
-                    <h2>Créer un compte ?</h2>
-                    <!-- Formulaire register -->
-                    <section id="section1" class="py-3">
-                        <div class="container">
-                            <div class="col-md-12">
-                                <form action="login.php" id="register-form">
-                                    <!-- Pseudo -->
-                                    <div class="label-center">
-                                        <label for="pseudo">Pseudo</label>
-                                    </div>
-                                    <input id="firstname" type="text" name="pseudo" tabindex="1" required autofocus placeholder="Votre pseudo..">
-                                    <!-- Email -->
-                                    <div class="label-center">
-                                        <label for="email">Email</label>
-                                    </div>
-                                    <input id="email" type="email" name="email" tabindex="2" required autofocus placeholder="Votre email..">
-                                    <!-- Date -->
-                                    <div class="label-center">
-                                        <label for="date">Date de naissance</label>
-                                    </div>
-                                    <input id="birthday" type="date" name="birthday">
-                                    <!-- Mot de passe -->
-                                    <div class="label-center">
-                                        <label for="inputPassword3">Mot de passe</label>
-                                    </div>
-                                    <input id="password" type="password" name="password" tabindex="3" required autofocus placeholder="Votre mot de passe..  ">
-                                    <br>
-                                    <div class="label-center">
-                                        <input type="submit" name="create" class="btn-send btn-register" value="S'INSCRIRE">
-                                    </div>
-                                </form>
-                            </div>
+<body class="bg-dark">
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <div class="text-center" cz-shortcut-listen="true">
+                <div class="logo-tweet">
+                    <a href="#">
+                        <div class="logo">
+                            <img src="..\img\logo.png" alt="logo">
                         </div>
-                    </section>
+                    </a>
+                </div>
+
+
+                <div class="login-form" id="login-form">
+                    <form class="form-signin m-auto"  style="max-width: 300px;">
+                        <h1 class="h3 mb-3 font-weight-normal">S'INREGISTRER</h1>
+                        <div class="label-center">
+
+                            <div class="text-danger" id="message"></div>
+
+                            <!-- Pseudo -->
+                            <div class="label-cente">
+                                <label for="pseudo">Pseudo</label>
+                            </div>
+                            <input class="form-control" id="pseudo" type="text" name="pseudo" tabindex="1" required
+                                autofocus placeholder="Votre pseudo..">
+                            <!-- Email -->
+                            <div class="label-center">
+                                <label for="email">Email</label>
+                            </div>
+                            <input class="form-control" id="email" type="email" name="email" tabindex="2" required
+                                autofocus placeholder="Votre email..">
+                            <div class="label-center">
+                                <label for="date">Date de naissance</label>
+                            </div>
+                            <input class="form-control" id="birthday" type="date" name="birthday">
+                            <!-- Mot de passe -->
+                            <div class="label-center">
+                                <label for="inputPassword3">Mot de passe</label>
+                            </div>
+                            <input class="form-control" id="password" type="password" name="password" tabindex="3"
+                                required autofocus placeholder="Votre mot de passe..  ">
+                            <a class="btn btn-lg btn btn-info btn-block" href="?p=login">Se
+                                connecter</a>
+                            <button id="submit" class="btn btn-lg btn btn-info btn-block" type="submit"
+                                name="submit-register">S'inscrire</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+    var submit = $("#submit");
+    $(submit).click(function(e) {
+        e.preventDefault();
+        var input = $("input");
+        for (let i = 0; i < input.length; i++) {
+            if ($(input[i]).val() == "") {
+                $(input[i]).css("border", "1px solid red")
+            } else {
+                $(input[i]).css("border", "1px solid #ced4da")
+            }
+        }
+
+        var email = $("#email").val();
+        var birthday = $("#birthday").val();
+        var pseudo = $("#pseudo").val();
+        var password = $("#password").val();
+
+
+        var message = $("#message");
+
+        $.ajax({
+            type: "POST",
+            url: "../../backend/controller/register_controller.php",
+            data: {
+                email: email,
+                birthday: birthday,
+                pseudo: pseudo,
+                password: password,
+            },
+            success: function(resultat, statut) {
+                if (resultat != "good") {
+
+
+
+                    $(message).addClass("alert alert-danger");
+
+                    $(message).text(resultat);
+
+                }
+                if (resultat == "good") {
+
+                    window.location.href = "?p=app";
+
+                    console.log("sucess");
+                }
+            }
+        });
+    });
+    </script>
 </body>
+
 </html>
