@@ -9,7 +9,7 @@ include "meta.html";
             <div class="logo-tweet">
                 <a href="#">
                     <div class="logo">
-                        <img src="..\img\logo.png" alt="logo">
+                        <img src="../img/logo.png" alt="logo">
                     </div>
                 </a>
             </div>
