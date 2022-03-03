@@ -3,6 +3,7 @@ include __DIR__ . '/../Database/DB.php';
 
 class Edit
 {
+    
     private $email;
     private $pseudo;
     private $password;
