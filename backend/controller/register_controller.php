@@ -91,8 +91,15 @@ class Register
                 </div>';
             }
         }
-        
 
+print_r($_FILES);
+
+print_r($_POST);
+$tmpname = $_FILES["photo"]["tmp_name"];
+echo $tmpname;
+$filename= $_FILES["photo"]["name"];
+$path = "../userpp";
+move_uploaded_file($tmpname, "$path/$filename");
 
 if(!empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["birthday"]) && !empty($_POST["password"]) ) {
 
