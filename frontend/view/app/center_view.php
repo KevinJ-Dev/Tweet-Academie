@@ -2,6 +2,9 @@
 
 
 <style>
+    .user_date{
+        font-size: 10px;
+    }
 .text-area {
 
     margin: 5px;
@@ -15,6 +18,18 @@
 
 .actu-js {
     text-align: center;
+
+}
+
+.user_info {
+    margin-left: -45px;
+}
+.img_profil_photo {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+
+    margin-right: -15px;
 
 }
 
@@ -48,12 +63,11 @@
 }
 
 .img_profil {
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .content {
@@ -137,11 +151,10 @@ window.onload = function() {
                         ".png'></div>");
 
                     $(".select_" + i).append("<div class='user_info' >" + data[i].pseudo + "</div>")
-                    $(".select_" + i).append("<div class='user_info' >" + data[i].date_post + "</div>")
+                    $(".select_" + i).append("<div class='user_date' >" + data[i].date_post + "</div>")
 
                     $("." + i).append("<div class='body' >" + data[i].text_post + "</div>");
 
-                    $("." + i).append("<div class='content-body' >" + data[i].text_post + "</div>");
 
 
                 }
