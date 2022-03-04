@@ -51,3 +51,7 @@ aside nav button > div{
     border-radius: 21px;
     /* background: var(--c-background); */
 }
+
+.link{
+    color: var(--black);
+}
