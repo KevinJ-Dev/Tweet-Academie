@@ -2,13 +2,9 @@
 
 
 <style>
-.actu-js {
-    text-align: center;
+.text-area {
 
-}
-
-.tweet {
-    margin: 40px;
+    margin: 5px;
     margin-bottom: 25px;
     padding: 20px;
     background: white;
@@ -17,8 +13,61 @@
 
 }
 
+.actu-js {
+    text-align: center;
+
+}
+
+.add-tweet {
+    width: 59%;
+    border: none;
+    margin-top: -15px;
+    /* margin: 5px; */
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #eceeefa6;
+    border-radius: 20px;
+    box-shadow: 1px 1px 16px #1818d191;
+    padding: 13px 15px;
+}
+
+.add-tweet:active {
+
+    box-shadow: 1px 1px 16px inset #1818d191;
+}
+
+.tweet {
+
+    margin: 5px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 16px #1818d191;
+
+}
+
+.img_profil {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
 .content {
+    height: 100%;
     background: #1DA1F2;
+}
+
+.btn_comment {
+    text-align: center;
+
+}
+
+.comment {
+    padding-top: 100px;
 }
 </style>
 
@@ -29,10 +78,10 @@
 
 
     <div class="comment" style="margin: auto;text-align: center;">
-        <textarea placeholder="votre tweet" name="" id="textarea" cols="25" rows="4"></textarea>
+        <textarea class="text-area" placeholder="votre tweet" name="" id="textarea" cols="25" rows="2"></textarea>
     </div>
 
-    <div class="">
+    <div class="btn_comment">
         <button class="btn btn-primary add-tweet">Tweet</button>
 
     </div>
@@ -47,7 +96,7 @@
 
 
 
-    
+
     </div>
 
     <div class="actu-js">
@@ -80,9 +129,22 @@ window.onload = function() {
 
                 for (let i = 0; i < data.length; i++) {
 
-                    actu.append("<div class='tweet "+ i + "' >"  + data[i].text_post + "</div>");
-                }
 
+                    actu.append("<div class='tweet " + i + "' ></div>");
+
+                    $("." + i).append("<div class='img_profil select_" + i +
+                        "   '> <img class='img_profil_photo' src='../backend/userpp/" + data[i].pseudo +
+                        ".png'></div>");
+
+                    $(".select_" + i).append("<div class='user_info' >" + data[i].pseudo + "</div>")
+                    $(".select_" + i).append("<div class='user_info' >" + data[i].date_post + "</div>")
+
+                    $("." + i).append("<div class='body' >" + data[i].text_post + "</div>");
+
+                    $("." + i).append("<div class='content-body' >" + data[i].text_post + "</div>");
+
+
+                }
 
 
             } else {
