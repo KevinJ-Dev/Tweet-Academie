@@ -11,16 +11,18 @@ class postController
    private $user_email;
    private $user_pseudo;
    private $text_post;
-   
+   private $session_cred;
+
    public function __construct()
    {
       // $this->email = $_SESSION["email"];
       $this->connexion = new DB();
       $this->bdd = $this->connexion->getDB();
       $this->text_post = $_POST["comment"];
+$this->session_cred = $_SESSION["email"];
    }
    public function set_user() {
-      $user = $this->bdd->query("SELECT * from users where email like 'klsdfj@gmail.com'");
+      $user = $this->bdd->query("SELECT * from users where email like '$this->session_cred'");
       $rows = $user->fetch(PDO::FETCH_ASSOC);
       
       $this->user_email = $rows["email"];
@@ -44,8 +46,6 @@ class postController
    
 
 }
-
-
 
 
 if(!empty($_SESSION["email"]) && !empty($_POST["comment"])) {
