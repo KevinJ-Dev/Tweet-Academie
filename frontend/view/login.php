@@ -10,7 +10,7 @@ include __DIR__ . '/../Database/loginController.php';
             <div class="logo-tweet">
                 <a href="#">
                     <div class="logo">
-                        <img src="..\img\logo.png" alt="logo">
+                        <img src="../../frontend/img/logo.png" alt="logo">
                     </div>
                 </a>
             </div>

@@ -32,7 +32,7 @@ $migration->insert('CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `birthdate` date NOT NULL,
-  `userpp` text NOT NULL,
+  `userpp` varchar(255) NOT NULL,
   `banner` text NOT NULL,
   `description` text NOT NULL,
   `theme` int(11) NOT NULL DEFAULT 0,
