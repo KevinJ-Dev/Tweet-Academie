@@ -35,6 +35,7 @@ padding: 4px;
 }
 
 .actu-js {
+    margin: 55px;
     text-align: center;
 
 }
@@ -94,6 +95,8 @@ padding: 4px;
 }
 
 .btn_comment {
+    width: 405px;
+
     text-align: center;
 
 }
