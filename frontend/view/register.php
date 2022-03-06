@@ -1,9 +1,7 @@
 <?php
 include "meta.html";
 ?>
-
 <body class="bg-dark">
-
     <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
             <div class="text-center" cz-shortcut-listen="true">
@@ -14,8 +12,6 @@ include "meta.html";
                         </div>
                     </a>
                 </div>
-
-
                 <div class="login-form" id="login-form">
                     <form class="form-signin m-auto" style="max-width: 300px;">
                         <h1 class="h3 mb-3 font-weight-normal">S'INREGISTRER</h1>
@@ -40,17 +36,9 @@ include "meta.html";
                             </div>
                             <input class="form-control" id="birthday" type="date" name="birthday">
                             <!-- Mot de passe -->
-
-
-
-
                             <div class="label-center">
                                 <label for="inputPassword3">Mot de passe</label>
                             </div>
-
-
-
-
                             <input class=" form-control" id="password" type="password" name="password" tabindex="3"
                                 required autofocus placeholder="Votre mot de passe..  ">
 
@@ -59,12 +47,8 @@ include "meta.html";
                             </div>
 
                             <input type="file" id="image_input">
-
                             <br>
                             <br>
-
-
-
                             <a class="btn btn-lg btn btn-info btn-block" href="?p=login">Se
                                 connecter</a>
                             <button id="submit" class="btn btn-lg btn btn-info btn-block" type="submit"
@@ -75,13 +59,11 @@ include "meta.html";
         </div>
     </div>
 
-
     <script type="text/javascript">
     var submit = $("#submit");
     $(submit).click(function(e) {
         e.preventDefault();
         var input = $("input");
-
 
         for (let i = 0; i < input.length -1; i++) {
             if ($(input[i]).val() == "") {
@@ -113,35 +95,25 @@ include "meta.html";
             success: function(resultat, statut) {
                 if (resultat != "good") {
 
-
-
                     $(message).addClass("alert alert-danger");
 
                     $(message).text(resultat);
 
                 }
                 if (resultat == "good") {
-
                     window.location.href = "?p=app";
-
                     console.log("sucess");
                 }
             }
         });
-
-
-
     });
 
-
-
     function send_photo(pseudo) {
-
         console.log(pseudo)
         var fd = new FormData();
         var files = $("#image_input")[0].files[0];
         fd.append('file', files);
-fd.append('pseudo', pseudo);
+        fd.append('pseudo', pseudo);
         $.ajax({
             type: "POST",
             url: "../../backend/controller/register_controller.php", 
@@ -154,10 +126,6 @@ fd.append('pseudo', pseudo);
             }
         });
     }
-
-
-
     </script>
 </body>
-
 </html>

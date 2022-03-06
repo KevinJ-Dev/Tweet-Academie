@@ -1,4 +1,4 @@
-<?php include "meta.html"; ?> 
+<?php include __DIR__. "\meta.html"; ?> 
 
 <html lang="en">
 <head>

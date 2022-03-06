@@ -16,11 +16,7 @@ $(submit).click(function(e) {
         pseudo: pseudo,
         password: password,
         success: function(resultat, statut) {
-
             console.log(resultat)
-
-
-
         }
     });
 });

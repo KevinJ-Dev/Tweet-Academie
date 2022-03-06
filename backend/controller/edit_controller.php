@@ -1,22 +1,18 @@
 <?php
 include __DIR__ . '/../Database/DB.php';
-
-class Edit
-{
+class Edit{
     private $email;
     private $pseudo;
     private $password;
     protected $connexion;
     protected $bdd;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->connexion = new DB();
         $this->bdd = $this->connexion->getDB();
     }
 
-    public function changePseudo()
-    {
+    public function changePseudo(){
         if (isset($_POST['Pseudo'])) {
             $newPseudo = $_POST['changePseudo'];
             $email = $_SESSION['login'];
@@ -48,8 +44,8 @@ class Edit
             }
         }
     }
-    public function changeemail()
-    {
+
+    public function changeemail(){
         if (isset($_POST['subemail'])) {
             $newemail = $_POST['changeemail'];
             $email = $_SESSION['login'];

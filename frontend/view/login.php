@@ -49,20 +49,14 @@ include __DIR__ . '/../Database/loginController.php';
                                 $(message).addClass("alert alert-danger");
 
                                 $(message).text(resultat);
-
-                                
-
                             }
                             else  {
-
                                 window.location.href = "?p=app";
-
                                 console.log("sucess");
                             }
                         }
                     });
                 });
             </script>
-
 </body>
 </html>
