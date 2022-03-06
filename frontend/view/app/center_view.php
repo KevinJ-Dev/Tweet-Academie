@@ -1,5 +1,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
@@ -7,39 +6,29 @@
     .user_date{
         font-size: 10px;
     }
-
-
 .body {
     text-align: left;
-
     margin: 15px;
-padding: 4px;
+    padding: 4px;
 }
-
 .comment_tweet {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-top: 1px solid #c3babab3;
-
 }
 
 .text-area {
-
     margin: 5px;
     margin-bottom: 25px;
     padding: 20px;
     background: white;
     border-radius: 20px;
     box-shadow: 1px 1px 16px #1818d191;
-
 }
-
 .actu-js {
     margin: 55px;
     text-align: center;
-
 }
-
 .user_info {
     margin-left: -45px;
 }
@@ -47,11 +36,8 @@ padding: 4px;
     height: 50px;
     width: 50px;
     border-radius: 100%;
-
     margin-right: -15px;
-
 }
-
 .add-tweet {
     width: 59%;
     border: none;
@@ -64,23 +50,17 @@ padding: 4px;
     box-shadow: 1px 1px 16px #1818d191;
     padding: 13px 15px;
 }
-
 .add-tweet:active {
-
     box-shadow: 1px 1px 16px inset #1818d191;
 }
-
 .tweet {
-
     margin: 5px;
     margin-bottom: 25px;
     padding: 20px;
     background: white;
     border-radius: 20px;
     box-shadow: 1px 1px 16px #1818d191;
-
 }
-
 .img_profil {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -88,30 +68,21 @@ padding: 4px;
     align-content: center;
     align-items: center;
 }
-
 .content {
     height: 100%;
     background: #1DA1F2;
 }
-
 .btn_comment {
     width: 405px;
-
     text-align: center;
-
 }
-
 .comment {
     padding-top: 100px;
 }
+
 </style>
 
-
-
-
 <div class="content">
-
-
     <div class="comment" style="margin: auto;text-align: center;">
         <textarea class="text-area" placeholder="votre tweet" name="" id="textarea" cols="25" rows="2"></textarea>
     </div>
@@ -120,35 +91,15 @@ padding: 4px;
         <button class="btn btn-primary add-tweet">Tweet</button>
 
     </div>
-
-
-
-
-
-
     <div id="message">
-
-
-
-
-
     </div>
 
     <div class="actu-js">
-
-
-
-
     </div>
-
 </div>
-
 
 <script type="text/javascript">
 var actu = $(".actu-js");
-
-
-
 
 window.onload = function() {
     $.ajax({
@@ -156,14 +107,10 @@ window.onload = function() {
         url: "../../backend/controller/fil_actu_controller.php",
         success: function(resultat) {
             if (resultat != "") {
-
-
                 var data = JSON.parse(resultat);
-
                 console.log(data) // data[0].text_post
 
                 for (let i = 0; i < data.length; i++) {
-
 
                     actu.append("<div class='tweet " + i + "' ></div>");
 
@@ -178,8 +125,6 @@ window.onload = function() {
                     $("." + i).append("<div class='comment_tweet' > <p class='btn retweet'> <ion-icon name='heart-outline'></ion-icon>  <p class='btn retweet'> <ion-icon name='code-outline'></ion-icon>  </p>  <p class='btn retweet'> <ion-icon name='share-outline'></ion-icon>  </p></div>");
                    
                 }
-
-
             } else {
 
                 console.log("aucun tweet")
@@ -189,23 +134,16 @@ window.onload = function() {
 
 }
 
-
-
-
 var addtweet = $(".add-tweet");
 $(addtweet).click(function(e) {
     var message = $("#message")
     var text_area = $("#textarea").val();
-
 
     e.preventDefault();
 
     if (text_area == "") {
 
     } else {
-
-
-
         $.ajax({
             type: "POST",
             url: "../../backend/controller/post_tweet_controller.php",
@@ -218,16 +156,12 @@ $(addtweet).click(function(e) {
 
                     $(message).text(resultat);
 
-
-
                 } else {
-
 
                     console.log("sucess");
                 }
             }
         });
     }
-
 });
 </script>

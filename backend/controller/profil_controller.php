@@ -1,10 +1,8 @@
 <?php
 include __DIR__ . '/../Database/DB.php';
-
 // A AJOUTER LE GET DES TWEETS
 
-class profil
-{
+class profil{
     protected $user;
     protected $id;
     protected $dateDeNaissance;
@@ -18,8 +16,7 @@ class profil
     protected $connexion;
     protected $bdd;
 
-    public function __construct($newUser,$newDN,$newPseudo, $newMail, $newMDP,$userpp,$banner,$description,$theme)
-    {
+    public function __construct($newUser,$newDN,$newPseudo, $newMail, $newMDP,$userpp,$banner,$description,$theme){
         $this->user = $newUser;
         $this->setId();
         $this->dateDeNaissance = $newDN;
@@ -34,16 +31,14 @@ class profil
         $this->bdd = $this->connexion->getDB();
     }
 
-    public function setId()
-    {
+    public function setId(){
         $getId = $this->bdd->prepare('select id from users where pseudo=?');
         $getId->execute(array($this->user));
         $userid = $getId->fetch();
         $this->id = $userid['id'];
     }
 
-    public function checkUserExist()
-    {
+    public function checkUserExist(){
         $check = $this->bdd->prepare('select pseudo from users where pseudo =?');
         $check->execute(array($this->user));
         if ($check->rowCount() >= 1) {
@@ -53,32 +48,19 @@ class profil
         }
     }
 
-    public function getFollower($id)
-    {
+    public function getFollower($id){
         $queryfollower = $this->bdd->query('select count(follower_id) from follow');
         $resultat = $queryfollower->fetch();
         echo $resultat['count(follower_id)'];
     }
-    public function getFollowing($id)
-    {
+
+    public function getFollowing($id){
         $queryFollowing = $this->bdd->query('select count(following_id) from follow');
         $resultat = $queryFollowing->fetch();
         echo $resultat['count(following_id)'];
     }
 
-
-
-
-
-
-
-
-
-
-
-
-    public function basicQuery($newQuery)
-    {
+    public function basicQuery($newQuery){
         return $this->bdd->query($newQuery);
     }
 }
