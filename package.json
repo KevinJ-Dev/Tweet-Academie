@@ -1,0 +1,19 @@
+{
+  "name": "tweet-academie",
+  "version": "1.0.0",
+  "description": "tweeter de ouf",
+  "scripts": {
+    "front": "php -S localhost:8080 -t frontend",
+    "back": "php -S localhost:8081 -t backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinJ-Dev/Tweet-Academie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinJ-Dev/Tweet-Academie/issues"
+  },
+  "homepage": "https://github.com/KevinJ-Dev/Tweet-Academie#readme"
+}

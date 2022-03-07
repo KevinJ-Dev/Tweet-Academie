@@ -1,0 +1,57 @@
+/* Navbar */
+aside{
+    height: 100%;
+    width: 180px;
+    padding: 40px;
+    background: var(--white);
+  }
+
+aside .logo{
+    display: block;
+    fill: var(--primary);
+    margin-bottom: 36px;
+  }
+
+aside nav{
+    display: grid;
+    grid-gap: 36px;
+  }
+
+aside nav button{
+    color: var(--black);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 19px;
+    line-height: 24px;
+    font-weight: bold;
+    text-align: left;
+    /* display: block; */
+    cursor: pointer;
+    position: relative;
+    color: var(--c-color);
+  }
+
+aside nav button.active{
+    color: var(--primary);
+    /* --c-color: var(--primary); */
+  }
+
+aside nav button .icon{
+    margin-right: 16px;
+    position: relative;
+  }
+
+aside nav button > div{
+    display: inline-flex;
+    padding: 10px 20px 10px 12px;
+    margin: -10px -20px -10px -12px;
+    border-radius: 21px;
+    /* background: var(--c-background); */
+}
+
+.link{
+    color: var(--black);
+}

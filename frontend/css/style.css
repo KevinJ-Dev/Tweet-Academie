@@ -1,0 +1,10 @@
+body{
+    min-height: 100vh;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background: #f7f7f7;
+  }
+
+.p-5{
+    padding: 3rem 3rem 6rem !important;
+}

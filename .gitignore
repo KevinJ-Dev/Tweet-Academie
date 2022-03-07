@@ -1,0 +1,4 @@
+.DS_Store
+.idea
+!backend/controller/main_controller.php
+!backend/database/DB.php
